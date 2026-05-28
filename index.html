@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>39th Avenue Cafe</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+      background:#f7f3ee;
+    }
+
+    .section{
+      display:none;
+      opacity:0;
+      transform:translateY(20px);
+      transition:all .5s ease;
+      min-height:100vh;
+    }
+
+    .section.active{
+      display:block;
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .card-hover{
+      transition:all .35s ease;
+    }
+
+    .card-hover:hover{
+      transform:translateY(-8px) scale(1.02);
+      box-shadow:0 20px 40px rgba(0,0,0,.12);
+    }
+
+    .nav-link{
+      position:relative;
+      transition:.3s;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      width:0%;
+      height:2px;
+      left:0;
+      bottom:-6px;
+      background:#d6a756;
+      transition:.3s;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after{
+      width:100%;
+    }
+
+    .btn-main{
+      transition:all .3s ease;
+    }
+
+    .btn-main:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 25px rgba(0,0,0,.2);
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cafe: {
+              brown:'#5C3A21',
+              cream:'#F8F2E9',
+              gold:'#D4AF37',
+              dark:'#2C241E',
+              latte:'#A67B5B'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+  <div class="container mx-auto px-5 py-4 flex items-center justify-between">
+
+    <h1 class="text-2xl font-extrabold text-cafe-brown tracking-wide">
+      39th Avenue
+    </h1>
+
+    <!-- DESKTOP -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#" onclick="showSection('home')" id="nav-home"
+        class="nav-link active text-cafe-gold font-medium">
+        Home
+      </a>
+
+      <a href="#" onclick="showSection('menu')" id="nav-menu"
+        class="nav-link text-cafe-dark hover:text-cafe-gold font-medium">
+        Menu
+      </a>
+
+      <a href="#" onclick="showSection('order')" id="nav-order"
+        class="nav-link text-cafe-dark hover:text-cafe-gold font-medium">
+        Order
+      </a>
+
+      <a href="#" onclick="showSection('about')" id="nav-about"
+        class="nav-link text-cafe-dark hover:text-cafe-gold font-medium">
+        About
+      </a>
+
+      <a href="#" onclick="showSection('location')" id="nav-location"
+        class="nav-link text-cafe-dark hover:text-cafe-gold font-medium">
+        Location
+      </a>
+    </div>
+
+    <!-- MOBILE BUTTON -->
+    <button id="menuBtn" class="md:hidden text-2xl text-cafe-dark">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="mobile-menu hidden md:hidden bg-white border-t">
+
+    <div class="flex flex-col p-5 gap-4">
+
+      <a href="#" onclick="showSection('home')"
+        class="text-cafe-dark font-medium">
+        Home
+      </a>
+
+      <a href="#" onclick="showSection('menu')"
+        class="text-cafe-dark font-medium">
+        Menu
+      </a>
+
+      <a href="#" onclick="showSection('order')"
+        class="text-cafe-dark font-medium">
+        Order
+      </a>
+
+      <a href="#" onclick="showSection('about')"
+        class="text-cafe-dark font-medium">
+        About
+      </a>
+
+      <a href="#" onclick="showSection('location')"
+        class="text-cafe-dark font-medium">
+        Location
+      </a>
+
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="section active">
+
+  <!-- HERO -->
+<div class="relative h-screen overflow-hidden">
+
+  <!-- VIDEO BACKGROUND -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    class="absolute top-0 left-0 w-full h-full object-cover">
+
+    <source src="video/coffee.mp4" type="video/mp4">
+
+  </video>
+
+  <!-- DARK OVERLAY -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- HERO CONTENT -->
+  <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-5">
+
+    <div class="max-w-3xl animate-fadeIn">
+
+      <p class="uppercase tracking-[6px] text-sm mb-4 text-cafe-gold">
+        Premium Coffee Experience
+      </p>
+
+      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+        Great Coffee,<br>
+        For Everyone.
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-200 mb-10">
+        Inspired by modern cafe culture.
+        Crafted coffee, cozy atmosphere,
+        and unforgettable moments.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+
+        <button onclick="showSection('menu')"
+          class="btn-main bg-cafe-gold hover:bg-yellow-600 text-white font-semibold px-8 py-4 rounded-full">
+
+          Explore Menu
+
+        </button>
+
+        <button onclick="showSection('order')"
+          class="btn-main border border-white hover:bg-white hover:text-cafe-dark text-white px-8 py-4 rounded-full font-semibold">
+
+          Order Now
+
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+
+<div class="py-20 bg-white">
+
+  <div class="container mx-auto px-5">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- CARD 1 -->
+      <div class="rounded-3xl overflow-hidden shadow-lg card-hover">
+
+        <img
+          src="images/pic1.jpg"
+          class="w-full h-[450px] object-cover"
+          alt="Coffee"
+        >
+
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="rounded-3xl overflow-hidden shadow-lg card-hover">
+
+        <img
+          src="images/pic2.jpg"
+          class="w-full h-[450px] object-cover"
+          alt="Cafe"
+        >
+
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="rounded-3xl overflow-hidden shadow-lg card-hover">
+
+        <img
+          src="images/pic4.jpg"
+          class="w-full h-[450px] object-cover"
+          alt="Coffee Shop"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- MENU -->
+
+<section id="menu" class="section bg-cafe-cream pt-28 pb-20">
+
+  <div class="container mx-auto px-5">
+
+    <div class="text-center mb-16">
+      <p class="text-cafe-gold uppercase tracking-[4px] mb-3">
+        Best Sellers
+      </p>
+
+      <h2 class="text-5xl font-extrabold text-cafe-brown">
+        Coffee Menu
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- ITEM -->
+      <div class="card-hover bg-white rounded-3xl overflow-hidden">
+
+        <img src="images/MS.jpg" class="w-full aspect-square object-contain p-4 bg-white">
+
+        <div class="p-7">
+          <h3 class="text-2xl font-bold text-cafe-dark mb-2">
+            Milky Strawberry
+          </h3>
+
+                  <div class="flex justify-between items-center">
+
+            <span class="text-cafe-gold text-2xl font-bold">
+              ₱85
+            </span>
+
+            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
+              Add
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="card-hover bg-white rounded-3xl overflow-hidden">
+
+        <img src="images/MATCHA.jpg" class="w-full aspect-square object-contain p-4 bg-white">
+
+        <div class="p-7">
+          <h3 class="text-2xl font-bold text-cafe-dark mb-2">
+            Matcha
+          </h3>
+
+                   <div class="flex justify-between items-center">
+
+            <span class="text-cafe-gold text-2xl font-bold">
+              ₱85
+            </span>
+
+            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
+              Add
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="card-hover bg-white rounded-3xl overflow-hidden">
+
+        <img src="images/CM.jpg" class="w-full aspect-square object-contain p-4 bg-white">
+
+        <div class="p-7">
+          <h3 class="text-2xl font-bold text-cafe-dark mb-2">
+            Caramel Macchiato          </h3>
+
+         <div class="flex justify-between items-center">
+
+            <span class="text-cafe-gold text-2xl font-bold">
+              ₱120
+            </span>
+
+            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
+              Add
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="card-hover bg-white rounded-3xl overflow-hidden">
+
+        <img src="images/ML.jpg" class="w-full aspect-square object-contain p-4 bg-white">
+
+        <div class="p-7">
+          <h3 class="text-2xl font-bold text-cafe-dark mb-2">
+            Mocha Latte         </h3>
+
+         <div class="flex justify-between items-center">
+
+            <span class="text-cafe-gold text-2xl font-bold">
+              ₱95
+            </span>
+
+            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
+              Add
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="card-hover bg-white rounded-3xl overflow-hidden">
+
+        <img src="images/SSL.jpg" class="w-full aspect-square object-contain p-4 bg-white">
+
+        <div class="p-7">
+          <h3 class="text-2xl font-bold text-cafe-dark mb-2">
+            Sea Salt Latte        </h3>
+
+         <div class="flex justify-between items-center">
+
+            <span class="text-cafe-gold text-2xl font-bold">
+              ₱100
+            </span>
+
+            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
+              Add
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="card-hover bg-white rounded-3xl overflow-hidden">
+
+        <img src="images/SP.jpg" class="w-full aspect-square object-contain p-4 bg-white">
+
+        <div class="p-7">
+          <h3 class="text-2xl font-bold text-cafe-dark mb-2">
+            Spanish Latte        </h3>
+
+         <div class="flex justify-between items-center">
+
+            <span class="text-cafe-gold text-2xl font-bold">
+              ₱95
+            </span>
+
+            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
+              Add
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order" class="section pt-28 pb-20 bg-white">
+
+  <div class="container mx-auto px-5">
+
+    <div class="max-w-2xl mx-auto">
+
+      <div class="text-center mb-12">
+        <p class="text-cafe-gold uppercase tracking-[4px] mb-3">
+          Fast Delivery
+        </p>
+
+        <h2 class="text-5xl font-extrabold text-cafe-brown">
+          Place Your Order
+        </h2>
+      </div>
+
+      <div class="bg-cafe-cream p-10 rounded-3xl shadow-xl">
+
+        <form onsubmit="sendEmail(event)" class="space-y-6">
+
+          <input id="name"
+            type="text"
+            placeholder="Full Name"
+            class="w-full p-4 rounded-xl border outline-none focus:ring-2 focus:ring-cafe-gold"
+          >
+
+          <div class="space-y-4 text-cafe-brown font-semibold">
+            <p>Select Quantity per Drink:</p>
+
+            <div>
+              <label>Milky Strawberry</label>
+              <input type="number" min="0" class="qty w-full p-2 border rounded" data-drink="Milky Strawberry">
+            </div>
+
+            <div>
+              <label>Matcha</label>
+              <input type="number" min="0" class="qty w-full p-2 border rounded" data-drink="Matcha">
+            </div>
+
+            <div>
+              <label>Caramel Macchiato</label>
+              <input type="number" min="0" class="qty w-full p-2 border rounded" data-drink="Caramel Macchiato">
+            </div>
+
+            <div>
+              <label>Mocha Latte</label>
+              <input type="number" min="0" class="qty w-full p-2 border rounded" data-drink="Mocha Latte">
+            </div>
+
+            <div>
+              <label>Sea Salt Latte</label>
+              <input type="number" min="0" class="qty w-full p-2 border rounded" data-drink="Sea Salt Latte">
+            </div>
+
+            <div>
+              <label>Spanish Latte</label>
+              <input type="number" min="0" class="qty w-full p-2 border rounded" data-drink="Spanish Latte">
+            </div>
+
+          </div>
+
+          <textarea id="address"
+            rows="4"
+            placeholder="Delivery Address"
+            class="w-full p-4 rounded-xl border outline-none focus:ring-2 focus:ring-cafe-gold"></textarea>
+
+          <button type="submit"
+            class="w-full bg-cafe-brown hover:bg-cafe-dark text-white py-4 rounded-xl font-bold text-lg">
+            Submit Order
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+function sendEmail(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const address = document.getElementById("address").value;
+
+  const inputs = document.querySelectorAll(".qty");
+
+  let orders = "";
+
+  inputs.forEach(input => {
+    const qty = input.value;
+    const drink = input.dataset.drink;
+
+    if (qty && qty > 0) {
+      orders += drink + ": " + qty + "%0A";
+    }
+  });
+
+  window.location.href =
+    "mailto:punojesseljean@gmail.com" +
+    "?subject=New Coffee Order" +
+    "&body=" +
+    "Name: " + name + "%0A" +
+    "Orders:%0A" + orders +
+    "%0AAddress: " + address;
+}
+</script>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section bg-cafe-cream pt-28 pb-20">
+
+  <div class="container mx-auto px-5">
+
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+
+      <div>
+        <img
+          src="images/pic3.jpg"
+          class="rounded-3xl shadow-2xl"
+        >
+      </div>
+
+      <div>
+
+        <p class="text-cafe-gold uppercase tracking-[4px] mb-3">
+          Our Story
+        </p>
+
+        <h2 class="text-5xl font-extrabold text-cafe-brown mb-6">
+          Inspired By Modern Cafe Culture
+        </h2>
+
+        <p class="text-gray-600 leading-8 text-lg mb-6">
+          39th Avenue Cafe delivers premium handcrafted drinks
+          inspired by modern coffee brands like Zus Coffee.
+          We focus on affordable luxury, cozy spaces,
+          and unforgettable coffee moments.
+        </p>
+
+                       </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="section bg-white pt-28 pb-20">
+
+  <div class="container mx-auto px-5">
+
+    <div class="text-center mb-14">
+
+      <p class="text-cafe-gold uppercase tracking-[4px] mb-3">
+        Visit Us
+      </p>
+
+      <h2 class="text-5xl font-extrabold text-cafe-brown">
+        Our Location
+      </h2>
+
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-cafe-cream p-10 rounded-3xl shadow-xl">
+
+      <div class="space-y-7 text-lg text-gray-700">
+
+        <div class="flex gap-4">
+          <i class="fa fa-map-marker text-cafe-gold text-2xl"></i>
+          <div>
+            <h3 class="font-bold text-cafe-dark mb-1">
+              Main Branch
+            </h3>
+            <p>
+              123 Coffee Street, Ortigas Center,<br>
+              Pasig City, Metro Manila
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <i class="fa fa-clock-o text-cafe-gold text-2xl"></i>
+          <div>
+            <h3 class="font-bold text-cafe-dark mb-1">
+              Opening Hours
+            </h3>
+            <p>
+              Monday - Sunday<br>
+              7:00 AM – 10:00 PM
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <i class="fa fa-phone text-cafe-gold text-2xl"></i>
+          <div>
+            <h3 class="font-bold text-cafe-dark mb-1">
+              Contact
+            </h3>
+            <p>
+              +63 912 345 6789<br>
+              hello@39thavenue.ph
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-cafe-dark text-white py-8">
+  <div class="container mx-auto px-5 text-center">
+    <p>
+      © 2026 39th Avenue Cafe • Inspired by modern coffee culture
+    </p>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+  // SHOW SECTION
+  function showSection(sectionId){
+
+    document.querySelectorAll('.section').forEach(section=>{
+      section.classList.remove('active');
+    });
+
+    document.getElementById(sectionId).classList.add('active');
+
+    // NAV ACTIVE
+    document.querySelectorAll('.nav-link').forEach(link=>{
+      link.classList.remove('active','text-cafe-gold');
+      link.classList.add('text-cafe-dark');
+    });
+
+    const activeLink = document.getElementById('nav-' + sectionId);
+
+    if(activeLink){
+      activeLink.classList.add('active','text-cafe-gold');
+      activeLink.classList.remove('text-cafe-dark');
+    }
+
+    // CLOSE MOBILE MENU
+    mobileMenu.classList.add('hidden');
+
+    // TOP
+    window.scrollTo({
+      top:0,
+      behavior:'smooth'
+    });
+  }
+
+  // MOBILE MENU
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', ()=>{
+    mobileMenu.classList.toggle('hidden');
+  });
+
+</script>
+
+</body>
+</html>
