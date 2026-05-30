@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>39th Avenue Cafe</title>
+  <title>39th Avenue Cafè</title>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -103,6 +103,52 @@
       object-fit:cover;
     }
 
+    @keyframes pageFade {
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.page-animation{
+  animation:pageFade .8s ease;
+}
+
+/* Optional image animation */
+@keyframes zoomIn {
+  from{
+    opacity:0;
+    transform:scale(.9);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.card-hover{
+  animation:zoomIn .8s ease;
+}
+
+  @keyframes floatUp {
+  from{
+    opacity:0;
+    transform:translateY(50px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.animate-fadeIn{
+  animation:floatUp 1.2s ease;
+}
+
   </style>
 
   <script>
@@ -125,7 +171,7 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
+
 <nav class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
   <div class="container mx-auto px-5 py-4 flex items-center justify-between">
 
@@ -133,7 +179,6 @@
       39th Avenue
     </h1>
 
-    <!-- DESKTOP -->
     <div class="hidden md:flex items-center gap-8">
       <a href="#" onclick="showSection('home')" id="nav-home"
         class="nav-link active text-cafe-gold font-medium">
@@ -161,13 +206,11 @@
       </a>
     </div>
 
-    <!-- MOBILE BUTTON -->
     <button id="menuBtn" class="md:hidden text-2xl text-cafe-dark">
       <i class="fa fa-bars"></i>
     </button>
   </div>
 
-  <!-- MOBILE MENU -->
   <div id="mobileMenu"
     class="mobile-menu hidden md:hidden bg-white border-t">
 
@@ -202,13 +245,10 @@
   </div>
 </nav>
 
-<!-- HOME -->
 <section id="home" class="section active">
 
-  <!-- HERO -->
 <div class="relative h-screen overflow-hidden">
 
-  <!-- VIDEO BACKGROUND -->
   <video
     autoplay
     muted
@@ -221,27 +261,20 @@
 
   </video>
 
-  <!-- DARK OVERLAY -->
   <div class="absolute inset-0 bg-black/50"></div>
 
-  <!-- HERO CONTENT -->
+
   <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-5">
 
     <div class="max-w-3xl animate-fadeIn">
 
-      <p class="uppercase tracking-[6px] text-sm mb-4 text-cafe-gold">
-        Premium Coffee Experience
-      </p>
-
-      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-        Great Coffee,<br>
-        For Everyone.
-      </h1>
+      <h2 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+        Coffee that lifts your day higher.
+      </h2>
 
       <p class="text-lg md:text-xl text-gray-200 mb-10">
-        Inspired by modern cafe culture.
-        Crafted coffee, cozy atmosphere,
-        and unforgettable moments.
+        Coffee is Good Remedy that Strikes your day,
+        to the Higher you.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -266,8 +299,6 @@
   </div>
 </div>
 
-<!-- FEATURES -->
-
 <div class="py-20 bg-white">
 
   <div class="container mx-auto px-5">
@@ -285,7 +316,6 @@
 
       </div>
 
-      <!-- CARD 2 -->
       <div class="rounded-3xl overflow-hidden shadow-lg card-hover">
 
         <img
@@ -296,7 +326,6 @@
 
       </div>
 
-      <!-- CARD 3 -->
       <div class="rounded-3xl overflow-hidden shadow-lg card-hover">
 
         <img
@@ -315,8 +344,6 @@
 
 </section>
 
-<!-- MENU -->
-
 <section id="menu" class="section bg-cafe-cream pt-28 pb-20">
 
   <div class="container mx-auto px-5">
@@ -333,7 +360,6 @@
 
     <div class="grid md:grid-cols-3 gap-10">
 
-      <!-- ITEM -->
       <div class="card-hover bg-white rounded-3xl overflow-hidden">
 
         <img src="images/ms.jpg" class="w-full aspect-square object-contain p-4 bg-white">
@@ -349,15 +375,10 @@
               ₱85
             </span>
 
-            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
-              Add
-            </button>
-
           </div>
         </div>
       </div>
 
-      <!-- ITEM -->
       <div class="card-hover bg-white rounded-3xl overflow-hidden">
 
         <img src="images/matcha.jpg" class="w-full aspect-square object-contain p-4 bg-white">
@@ -373,15 +394,10 @@
               ₱85
             </span>
 
-            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
-              Add
-            </button>
-
           </div>
         </div>
       </div>
 
-      <!-- ITEM -->
       <div class="card-hover bg-white rounded-3xl overflow-hidden">
 
         <img src="images/cm.jpg" class="w-full aspect-square object-contain p-4 bg-white">
@@ -396,15 +412,10 @@
               ₱120
             </span>
 
-            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
-              Add
-            </button>
-
           </div>
         </div>
       </div>
 
-      <!-- ITEM -->
       <div class="card-hover bg-white rounded-3xl overflow-hidden">
 
         <img src="images/ml.jpg" class="w-full aspect-square object-contain p-4 bg-white">
@@ -419,15 +430,10 @@
               ₱95
             </span>
 
-            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
-              Add
-            </button>
-
           </div>
         </div>
       </div>
 
-      <!-- ITEM -->
       <div class="card-hover bg-white rounded-3xl overflow-hidden">
 
         <img src="images/ssl.jpg" class="w-full aspect-square object-contain p-4 bg-white">
@@ -439,18 +445,13 @@
          <div class="flex justify-between items-center">
 
             <span class="text-cafe-gold text-2xl font-bold">
-              ₱100
+              ₱125
             </span>
-
-            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
-              Add
-            </button>
 
           </div>
         </div>
       </div>
 
-      <!-- ITEM -->
       <div class="card-hover bg-white rounded-3xl overflow-hidden">
 
         <img src="images/sp.jpg" class="w-full aspect-square object-contain p-4 bg-white">
@@ -465,21 +466,14 @@
               ₱95
             </span>
 
-            <button class="bg-cafe-brown hover:bg-cafe-dark text-white px-5 py-2 rounded-full transition">
-              Add
-            </button>
-
           </div>
         </div>
       </div>
-
-
 
     </div>
   </div>
 </section>
 
-<!-- ORDER -->
 <section id="order" class="section pt-28 pb-20 bg-white">
 
   <div class="container mx-auto px-5">
@@ -596,7 +590,6 @@ function sendEmail(event) {
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="section bg-cafe-cream pt-28 pb-20">
 
   <div class="container mx-auto px-5">
@@ -617,22 +610,18 @@ function sendEmail(event) {
         </p>
 
         <h2 class="text-5xl font-extrabold text-cafe-brown mb-6">
-          Inspired By Modern Cafe Culture
+          Inspired By Humble Beginnings with a Mobile Cafè Bar.
         </h2>
 
         <p class="text-gray-600 leading-8 text-lg mb-6">
-          39th Avenue Cafe delivers premium handcrafted drinks
-          inspired by modern coffee brands like Zus Coffee.
-          We focus on affordable luxury, cozy spaces,
-          and unforgettable coffee moments.
+          What started as a small mobile café bar grew into a coffee shop built through passion, patience, and determination.
         </p>
 
-                       </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- LOCATION -->
 <section id="location" class="section bg-white pt-28 pb-20">
 
   <div class="container mx-auto px-5">
@@ -660,8 +649,8 @@ function sendEmail(event) {
               Main Branch
             </h3>
             <p>
-              123 Coffee Street, Ortigas Center,<br>
-              Pasig City, Metro Manila
+              Block 39, Lot 27, Northville 16, Atlubola,<br>
+              Mabalacat City, Pampanga
             </p>
           </div>
         </div>
@@ -674,7 +663,7 @@ function sendEmail(event) {
             </h3>
             <p>
               Monday - Sunday<br>
-              7:00 AM – 10:00 PM
+              4:00 pm - 12:00 am
             </p>
           </div>
         </div>
@@ -686,8 +675,8 @@ function sendEmail(event) {
               Contact
             </h3>
             <p>
-              +63 912 345 6789<br>
-              hello@39thavenue.ph
+              0998 317 9251<br>
+              fb: 39th Avenue Cafè
             </p>
           </div>
         </div>
@@ -697,57 +686,81 @@ function sendEmail(event) {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-cafe-dark text-white py-8">
+
   <div class="container mx-auto px-5 text-center">
-    <p>
-      © 2026 39th Avenue Cafe • Inspired by modern coffee culture
-    </p>
+
+    <h2 class="text-2xl font-bold mb-4">
+      39th Avenue Cafe
+    </h2>
+
+    <div class="flex justify-center gap-6 text-2xl">
+
+      <a href="https://web.facebook.com/profile.php?id=61578962022687"
+         target="_blank"
+         class="hover:text-cafe-gold transition">
+
+        <i class="fa fa-facebook"></i>
+
+      </a>
+
+     <a href="https://www.instagram.com/39th_avenue_cafe" 
+      target="_blank" 
+      class="hover:text-cafe-gold transition">
+
+     <i class="fa fa-instagram"></i> 
+
+</a> 
+
+     <a href="https://www.tiktok.com/@thirtyninthavenue"
+       target="_blank"
+       class="hover:text-cafe-gold transition">
+
+      <i class="fa fa-music"></i> 
+
+</a>
+
+          </div>
+
   </div>
+
 </footer>
 
-<!-- JAVASCRIPT -->
 <script>
 
-  // SHOW SECTION
   function showSection(sectionId){
 
-    document.querySelectorAll('.section').forEach(section=>{
-      section.classList.remove('active');
-    });
+  document.querySelectorAll('.section').forEach(section=>{
+    section.classList.remove('active','page-animation');
+  });
 
-    document.getElementById(sectionId).classList.add('active');
+  const activeSection = document.getElementById(sectionId);
 
-    // NAV ACTIVE
-    document.querySelectorAll('.nav-link').forEach(link=>{
-      link.classList.remove('active','text-cafe-gold');
-      link.classList.add('text-cafe-dark');
-    });
+  activeSection.classList.add('active');
 
-    const activeLink = document.getElementById('nav-' + sectionId);
+  setTimeout(() => {
+    activeSection.classList.add('page-animation');
+  }, 10);
 
-    if(activeLink){
-      activeLink.classList.add('active','text-cafe-gold');
-      activeLink.classList.remove('text-cafe-dark');
-    }
+  document.querySelectorAll('.nav-link').forEach(link=>{
+    link.classList.remove('active','text-cafe-gold');
+    link.classList.add('text-cafe-dark');
+  });
 
-    // CLOSE MOBILE MENU
-    mobileMenu.classList.add('hidden');
+  const activeLink = document.getElementById('nav-' + sectionId);
 
-    // TOP
-    window.scrollTo({
-      top:0,
-      behavior:'smooth'
-    });
+  if(activeLink){
+    activeLink.classList.add('active','text-cafe-gold');
+    activeLink.classList.remove('text-cafe-dark');
   }
 
-  // MOBILE MENU
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+  mobileMenu.classList.add('hidden');
 
-  menuBtn.addEventListener('click', ()=>{
-    mobileMenu.classList.toggle('hidden');
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
   });
+}
 
 </script>
 
