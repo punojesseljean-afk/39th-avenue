@@ -555,6 +555,7 @@
 
 </section>
 
+    }```html
 <script>
 function sendEmail(event) {
   event.preventDefault();
@@ -565,13 +566,24 @@ function sendEmail(event) {
   const inputs = document.querySelectorAll(".qty");
 
   let orders = "";
+  let total = 0;
 
   inputs.forEach(input => {
-    const qty = input.value;
+    const qty = parseInt(input.value) || 0;
     const drink = input.dataset.drink;
 
-    if (qty && qty > 0) {
-      orders += drink + ": " + qty + "%0A";
+    let price = 0;
+
+    if (drink === "Milky Strawberry") price = 85;
+    else if (drink === "Matcha") price = 85;
+    else if (drink === "Caramel Macchiato") price = 120;
+    else if (drink === "Mocha Latte") price = 95;
+    else if (drink === "Sea Salt Latte") price = 125;
+    else if (drink === "Spanish Latte") price = 95;
+
+    if (qty > 0) {
+      orders += drink + ": " + qty + " = ₱" + (qty * price) + "%0A";
+      total += qty * price;
     }
   });
 
@@ -579,11 +591,16 @@ function sendEmail(event) {
     "mailto:punojesseljean@gmail.com" +
     "?subject=New Coffee Order" +
     "&body=" +
-    "Name: " + name + "%0A" +
-    "Orders:%0A" + orders +
-    "%0AAddress: " + address;
+    "Name: " + name + "%0A%0A" +
+    "Orders:%0A" +
+    orders +
+    "%0A--------------------%0A" +
+    "TOTAL: ₱" + total +
+    "%0A--------------------%0A" +
+    "Address: " + address;
 }
 </script>
+
         </form>
       </div>
     </div>
